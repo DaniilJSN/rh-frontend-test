@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-materialize';
 import UserAvatar from '../components/UserAvatar/UserAvatar';
 import BreadCrumb from '../features/Breadcrumb/Breadcrumb';
 import {
