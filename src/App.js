@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import VideoCallLayout from './layout/VideoCallLayout';
+import PaymentForm from './features/PaymentForm/PaymentForm';
+import { Button } from 'react-materialize';
+import { useRecoilState } from 'recoil';
+import { formState } from './store/paymentMethodStore';
 
 function App() {
+  const [formValues] = useRecoilState(formState);
+  const [formIsValid, setFormIsValid] = useState(false);
+
+  useEffect(() => {
+    const USER_FIELDS = ['name', 'lastname', 'email'];
+    let valid = true;
+
+    USER_FIELDS.forEach((field) => {
+      if (!formValues[field]) {
+        valid = false;
+        return;
+      }
+    });
+
+    if (!formValues.paymentMethod) valid = false;
+
+    setFormIsValid(valid);
+  }, [formValues]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <VideoCallLayout
+        footerChildren={<Button disabled={!formIsValid}>Pay $75</Button>}
+      >
+        <PaymentForm />
+      </VideoCallLayout>
     </div>
   );
 }

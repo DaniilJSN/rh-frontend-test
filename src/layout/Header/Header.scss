@@ -1,0 +1,11 @@
+@import "../../scss/theme";
+
+.header {
+  min-height: 175px;
+  padding: 50px 15px 24px;
+  background: $black;
+
+  .user-avatar {
+    margin-bottom: 17px;
+  }
+}

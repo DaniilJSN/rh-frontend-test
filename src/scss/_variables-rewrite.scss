@@ -1,0 +1,13 @@
+// Color
+$primary-color: $brand-blue;
+$primary-color-light: lighten($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 15%);
+$secondary-color: $brand-purple;
+$link-color: $primary-color;
+
+// Button
+$button-height: 55px;
+$button-radius: 100px;
+
+$button-raised-background: $primary-color;
+$button-raised-background-hover: lighten($button-raised-background, 5%);

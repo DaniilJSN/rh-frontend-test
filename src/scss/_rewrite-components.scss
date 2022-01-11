@@ -1,0 +1,7 @@
+// Button
+
+.btn, .btn-small, .btn-large {
+  @media (min-width: 315px) {
+    min-width: 283px;
+  }
+}

@@ -1,0 +1,28 @@
+.heading {
+  margin: 0;
+  font-style: normal;
+  font-weight: bold;
+
+  &-1 {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  &-2 {
+    font-size: 27px;
+    line-height: 1.296;
+  }
+
+  &-3 {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  &-5 {
+    font-size: 20px;
+  }
+
+  &-6 {
+    font-size: 18px;
+  }
+}

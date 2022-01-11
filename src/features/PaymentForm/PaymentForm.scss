@@ -1,0 +1,54 @@
+@import '../../scss/theme';
+
+.payment-form {
+  width: 100%;
+  max-width: 345px;
+  margin: 0 auto;
+
+  .heading {
+    margin-bottom: 16px;
+
+    &:nth-of-type(n + 2) {
+      margin-top: 32px;
+    }
+  }
+
+  .form-control,
+  .radio-btn {
+    margin-bottom: 20px;
+  }
+
+  .notes {
+    font-size: 12px;
+    line-height: 20px;
+    color: $gray;
+
+    a {
+      font-weight: 600;
+      color: inherit;
+
+      &:hover {
+        color: $brand-blue;
+      }
+    }
+  }
+}
+
+.paypal-payment-control {
+  .radio-btn-wrapper {
+    align-items: flex-start;
+  }
+}
+
+.paypal-payment {
+  font-size: 12px;
+  line-height: 1.5;
+  color: $gray;
+
+  img {
+    display: block;
+    width: 64px;
+    height: auto;
+    margin-bottom: 8px;
+  }
+}
