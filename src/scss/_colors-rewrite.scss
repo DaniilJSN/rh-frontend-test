@@ -3,5 +3,3 @@ $shades: (
   'white': $white,
   'transparent': transparent,
 );
-
-$colors: map-merge($map1: $colors, $map2: $theme-colors);
