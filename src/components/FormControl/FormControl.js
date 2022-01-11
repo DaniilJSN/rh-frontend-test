@@ -14,9 +14,9 @@ const FormControl = ({
     <div className={classNames('form-control', className)}>
       {label && <label htmlFor={id}>{label}</label>}
       {type === 'textarea' ? (
-        <textarea {...props}></textarea>
+        <textarea id={id} {...props}></textarea>
       ) : (
-        <input type={type} {...props} />
+        <input id={id} type={type} {...props} />
       )}
     </div>
   );
