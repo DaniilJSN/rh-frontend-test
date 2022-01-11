@@ -1,39 +1,63 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Heading from '../../components/Heading/Heading';
 import FormControl from '../../components/FormControl/FormControl';
 import RadioButton from '../../components/RadioButton/RadioButton';
 import CardPaymentOption from '../CardPaymentOption/CardPaymentOption';
+import { useRecoilState } from 'recoil';
+import { formState } from '../../store/paymentMethodStore';
 import PaypalLogo from '../../assets/images/Paypal.png';
 import './PaymentForm.scss';
 
 const PaymentForm = () => {
-  const [cardNumber, setCardNumber] = useState('');
-  const [expired, setExpired] = useState('');
-  const [cvc, setCvc] = useState('');
+  const [formValues, setFormValues] = useRecoilState(formState);
+
+  const handleFormChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className="payment-form">
-      <Heading tag='h2' showAs="heading-6">Your info</Heading>
-      <FormControl name="name" label="Name" placeholder="Enter your name" />
+      <Heading tag="h2" showAs="heading-6">
+        Your info
+      </Heading>
       <FormControl
-        name="lastName"
+        name="name"
+        label="Name"
+        placeholder="Enter your name"
+        value={formValues.name}
+        onChange={handleFormChange}
+      />
+      <FormControl
+        name="lastname"
         label="Last name"
         placeholder="Enter your last name"
+        value={formValues.lastname}
+        onChange={handleFormChange}
       />
-      <FormControl name="email" label="Email" placeholder="Enter your email" />
+      <FormControl
+        name="email"
+        label="Email"
+        placeholder="Enter your email"
+        value={formValues.email}
+        onChange={handleFormChange}
+      />
 
-      <Heading tag='h2' showAs="heading-6">Select payment</Heading>
-      <RadioButton name="paymentType">
-        <CardPaymentOption
-          cardNumber={cardNumber}
-          expired={expired}
-          cvc={cvc}
-          handleCardNumberChange={(e) => setCardNumber(e.target.value)}
-          handleExpiredChange={(e) => setExpired(e.target.value)}
-          handleCvcChange={(e) => setCvc(e.target.value)}
-        />
+      <Heading tag="h2" showAs="heading-6">
+        Select payment
+      </Heading>
+      <RadioButton
+        name="paymentMethod"
+        value="CreditCard"
+        onChange={handleFormChange}
+      >
+        <CardPaymentOption formValues={formValues} handleFormChage={handleFormChange} />
       </RadioButton>
-      <RadioButton className="paypal-payment-control" name="paymentType">
+      <RadioButton
+        className="paypal-payment-control"
+        name="paymentMethod"
+        value="paypal"
+        onChange={handleFormChange}
+      >
         <div className="paypal-payment">
           <img
             src={PaypalLogo}
@@ -45,7 +69,10 @@ const PaymentForm = () => {
           <div>You’ill be redirected to paypal.com</div>
         </div>
       </RadioButton>
-      <p className="notes">By pledging, you agree with Lynq <a href="/#">Terms of Use</a>, <a href="/#">Privacy Policy</a> and <a href="/#">Cookie Policy</a></p>
+      <p className="notes">
+        By pledging, you agree with Lynq <a href="/#">Terms of Use</a>,{' '}
+        <a href="/#">Privacy Policy</a> and <a href="/#">Cookie Policy</a>
+      </p>
     </div>
   );
 };

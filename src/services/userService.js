@@ -1,4 +1,4 @@
-export const getUserInfo = async () => ({
+export const getUserInfo = () => ({
   photo: {
     widht: 63,
     height: 63,
